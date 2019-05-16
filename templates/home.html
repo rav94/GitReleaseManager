@@ -7,8 +7,17 @@
   <body>
     <h1> Git Release Manager </h1>
     <br/>
-    <p>Please Enter Your Release Version Number:</p>
-    <input id="releaseID" type="number" name="release_id"></input>
-    <a href='/call_git_release'><input type=”button” value=”Go”></a>
+    <form action='/release'method="POST">
+      <p>
+        <label>Please Enter Your Release Version Number:</label>
+        <input id="releaseID" name="release_id"></input>
+      </p>
+      <p>
+        <label>Please Enter Your New Version Number:</label>
+        <input id="newID" name="new_id"></input>
+      </p>
+      <p><input type = "submit" value = "submit" /></p>
+    </form>
+    
   </body>
 </html>
