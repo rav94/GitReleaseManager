@@ -14,7 +14,6 @@ class GitRelease(object):
         error = error.strip()
         return out, error
 
-
     def _set_git_environment(self):
         success, error = False, False
         git_current_branch_cmd = "git branch | grep \*" + " | cut -d ' ' -f2"
@@ -32,8 +31,9 @@ class GitRelease(object):
                     return success, error
 
                 else:
+                    #Pulling lots of changes returns as an error, hence removing the Error=True as command is actually sucesfull
                     print("Git Pull Master Error - {}".format(git_pull_error))
-                    error = git_pull_error
+                    success = git_pull_error
                     return success, error
 
             else:
@@ -71,10 +71,6 @@ class GitRelease(object):
             print("Git Branch Name Check - {}".format(branch_check_error))
             error = branch_check_error
             return success, error
-
-    #def _git_release(self):
-        #success, error = False,  False
-
 
     def git_release_invoke(self):
         success, error = self._set_git_environment()
